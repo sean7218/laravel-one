@@ -64,3 +64,9 @@ Route::get('v2/todos', 'TodoListController@index');
 Route::get('v2/todos/{id}', 'TodoListController@show');
 // This is a important function
 Route::resource('todos', 'TodoListController');
+
+
+// setting up the database
+Route::get('db', function(){
+    return DB::select('show tables');
+});
