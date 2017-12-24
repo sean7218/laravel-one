@@ -16,13 +16,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// instead of having a function we use a controller here
+// tm stands for tranversy media
+Route::get('/tm/', 'PagesController@index');
+Route::get('/tm/about', 'PagesController@about');
+Route::get('/tm/services', 'PagesController@services');
+
+// the dictionary {'name': 'Sean'} is passed in hello.blade.php
+// this resides in resources/views folder 
 Route::get('/hello', function(){
-    return View::make('hello', array('name'=> 'friend'));
+    return View::make('hello', array('name' => 'Sean'));
 });
 
-Route::get('/hello2', function(){
-    return View::make('hello')->with('name', 'Sean');
-});
 
 Route::get('/hello/{name}', function($name){
     return View::make('hello')->with('name', $name);

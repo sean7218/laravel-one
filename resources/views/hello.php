@@ -12,6 +12,6 @@
         echo "hello, $name"
     ?></h1>
 
-    <?php var_dump($name, $email) ?>
+
 </body>
 </html>
