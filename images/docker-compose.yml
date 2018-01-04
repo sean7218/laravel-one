@@ -1,0 +1,25 @@
+ version: '2'
+
+ services:
+    mysqldb:
+      image: 'mysql:latest'
+      environment:
+        - ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_USER=my_user
+        - MYSQL_DATABASE=my_database
+        - MYSQL_PASSWORD=my_password
+  
+    myapp:
+      tty: true
+      image: 'bitnami/laravel:latest'
+      labels:
+        kompose.service.type: nodeport
+      environment:
+        - DB_HOST=mysqldb
+        - DB_USERNAME=my_user
+        - DB_DATABASE=my_database
+        - DB_PASSWORD=my_password
+      ports:
+        - 3000:3000
+      volumes:
+        - ./:/app
