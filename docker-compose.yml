@@ -19,7 +19,8 @@ services:
       
   myapp:
     tty: true
-    image: 'bitnami/laravel:latest'
+    build: ./5
+    image: 'sean7218/laravel:latest'
     labels:
       kompose.service.type: nodeport
     environment:
