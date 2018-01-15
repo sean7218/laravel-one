@@ -1,21 +1,16 @@
 version: '2'
 
-networks:
-  app-tier:
-    driver: bridge
-
 services:
   mysql:
     image: 'bitnami/mysql:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes 
+      - MYSQL_DATABASE=stackerdb
+      - MYSQL_ROOT_PASSWORD=password123
     volumes:
-      - ./mysql:/bitnami
+      - ./storage/db:/bitnami
     ports:
       - 3306:3306
-    networks:
-      - app-tier
-
       
   myapp:
     tty: true
@@ -29,9 +24,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./:/app
-    networks:
-      - app-tier
+      - ./:/app 
 
 
 

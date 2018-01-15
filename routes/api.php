@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Stack;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +21,9 @@ Route::get('/array', function(){
 	return response()
             ->json(['name' => 'Abigail', 'state' => 'CA'])
             ->withCallback($request->input('callback'));
+});
+
+Route::get('stacks', function() {
+    $stacks = Stack::all();    
+    return response()->json($stacks);
 });
