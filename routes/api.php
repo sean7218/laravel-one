@@ -27,3 +27,9 @@ Route::get('stacks', function() {
     $stacks = Stack::all();    
     return response()->json($stacks);
 });
+
+Route::get('s3', function() {
+    $s3 = AWS::createClient('s3');
+    $s3->putObject(array());
+    return 'success';
+});
