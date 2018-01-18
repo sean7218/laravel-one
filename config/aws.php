@@ -17,19 +17,16 @@ return [
     |
     */
 
+    // AWS
     'credentials' => [
-        'key'    => 'YOUR_AWS_ACCESS_KEY_ID',
-        'secret' => 'YOUR_AWS_SECRET_ACCESS_KEY',
+        'key'    => 'AKIAJRKK7IRWDYVSPU2Q',
+        'secret' => 'PJ6vOKWyD60m1fKhhvJXVAQcJJmT4JmuaqT/2Y9C',
     ],
     'region' => 'us-east-2',
     'version' => 'latest',
-    
+
     // You can override settings for specific services
     'Ses' => [
         'region' => 'us-east-2',
     ],
-
-
-
-
 ];

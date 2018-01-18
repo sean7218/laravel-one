@@ -1,11 +1,21 @@
 <?php
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/seanz-api
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Stack extends Model {
+<<<<<<< HEAD
+	protected $fillable = array('name', 'owner', 'goal', 'balance');
+        protected $table = 'stack';
+=======
 
     protected $fillable = array('name', 'owner', 'goal', 'balance');
 
 
     protected $table = 'stacks';
+>>>>>>> origin/seanz-api
 }

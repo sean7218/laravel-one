@@ -73,13 +73,13 @@ Route::resource('todos', 'TodoListController');
 
 // setting up the database
 Route::get('db', function(){
-    return DB::select('show tables');
+    return DB::select('');
 });
 
-// Hard code some json and output into the blade template
-Route::get('api', function(){
-    return response()->json([
-        'name' => 'house',
-	'goal' => '10020'
-    ]);
-});
+
+
+
+
+
+
+

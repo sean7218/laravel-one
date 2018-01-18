@@ -176,8 +176,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // aws
-	Aws\Laravel\AwsServiceProvider::class,
+        // AWS
+        BaoPham\DynamoDb\DynamoDbServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
     ],
 
     /*
@@ -227,7 +228,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         // AWS
-	'AWS' => Aws\Laravel\AwsFacade::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
+
+
     ],
 
 ];
