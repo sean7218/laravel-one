@@ -1,6 +1,24 @@
 version: '2'
 
 services:
+  express:
+    tty: true
+    image: 'bitnami/express:latest'
+    labels:
+      kompose.service.type: nodeport
+    environment:
+      - PORT=7070
+      - NODE_ENV=development
+      - SKIP_DB_WAIT=0
+      - SKIP_DB_MIGRATION=0
+      - SKIP_NPM_INSTALL=0
+      - SKIP_BOWER_INSTALL=0
+    command: npm run development
+    ports:
+      - 7070:7070
+    volumes:
+      - ./express:/app
+    
   mariadb:
     image: 'bitnami/mariadb:latest'
     environment:
