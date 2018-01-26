@@ -10,6 +10,20 @@ var users = require('./routes/users');
 
 var app = express();
 
+// SeanZ modules
+var plaid = require('plaid');
+var dotenv = require('dotenv')
+dotenv.config();
+
+const plaidClient = new plaid.Client(
+    process.env.PLAID_CLIENT_ID,
+    process.env.PLAID_SECRET,
+    process.env.PUBLIC_KEY,
+    plaid.environments.sandbox
+);
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
