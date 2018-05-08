@@ -10,12 +10,15 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+<<<<<<< HEAD
+/express/.env
+=======
 
-5/rootfs/app-entrypoint.sh.orig composer.json.orig
+5/rootfs/app-entrypoint.sh.orig
+composer.json.orig
 composer.lock.orig
 config/app.php.orig
 config/aws.php.orig
-docker-compose.yml.orig
 docker-compose.yml.orig
 routes/api.php.orig
 routes/web.php.orig

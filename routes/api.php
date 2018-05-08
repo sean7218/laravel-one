@@ -2,12 +2,9 @@
 
 use Illuminate\Http\Request;
 use App\Stack;
-
-
 use App\User;
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 use Lcobucci\JWT\Parser;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +16,53 @@ use Lcobucci\JWT\Parser;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('getStackByName/{user}/{name}', function($user, $name){
+    try { 
+        $stack = Stack::whereOwner($user)->whereName($name)->get();
+        return response()->json($stack);
+    } catch (\Exception $e) {
 
+    try {
+        $stacks = Stack::whereOwner($username)->get();
+        return response()->json($stacks);
+    } catch (\Exception $e){
+        return $e->getMessage();
+    }
+});
 
-Route::get('getStack', function($stackName, $token){
-
-
+Route::get('getStackById/{stackId}', function($stackId){
+    try {
+        $stack = Stack::find($stackId);
+        return response()->json($stack);
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    } 
 });
 
 Route::post('deleteStack', function(Request $request){
-
-    return 'good';
+    $user = $request->input('username');
+    $id = $request->input('id');
+    try {
+        $stack = Stack::find($id);
+        $stack->delete();
+        return "record deleted";
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    } 
+    } 
 });
 Route::post('updateStack', function(Request $request){
-    
-    return 'good';
+    try {
+        $id = $request->input('id');
+        $stack = Stack::find($id);
+        $stack->goal = ($request->input('goal') == null ? $stack->goal : $request->input('goal'));
+        $stack->balance = ($request->input('balance') == null ? $stack->balance : $request->input('balance'));
+        $stack->name = ($request->input('name') == null ? $stack->name : $request->input('name'));
+        $stack->save();
+        return "record updated";
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    }    
 });
 
 function isAuthenticated(Request $request) {
@@ -53,7 +83,6 @@ Route::post('createStack', function(Request $request){
         return $e->getMessage();
     }
 });
-
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -195,7 +224,7 @@ Route::get('user', function(){
     return response()->json($users);
 
 });
-
+/*
 Route::get('s3', function(){
     $s3 = AWS::createClient('s3');
     // First
@@ -218,6 +247,6 @@ Route::get('s3', function(){
     $presignedUrl = (string) $request->getUri();
     return response()->json(['url' => $presignedUrl]);
 });
-
+*/
 
 

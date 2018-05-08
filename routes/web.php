@@ -83,3 +83,8 @@ Route::get('db', function(){
 
 
 
+=======
+Route::get('login', function() {
+    return view('login');
+});
+>>>>>>> origin-github/seanz-api
